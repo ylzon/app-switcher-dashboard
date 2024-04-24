@@ -1,0 +1,170 @@
+html, body {
+  margin: 0;
+  color: #fff;
+  background: #021250;
+  overflow-x: hidden;
+}
+h1,h2,h3,h4,h5,h6 {
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  color: #fff;
+}
+.dashboard {
+  font-family: Microsoft YaHei, Microsoft YaHei-Regular;
+  background: #00063C url("../../../public/static/screen/bg.png") no-repeat center top;
+  margin: 0 -12px;
+  .header {
+    height: 76px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 40px;
+      font-weight: bold;
+      color: #f4f6fc;
+      line-height: 24px;
+      letter-spacing: 12px;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      text-shadow: 3px 3px 0px #010C57,0 0 8px #8eacff;
+      background: url("../../../public/static/screen/header.png") no-repeat center top;
+    }
+    .left {
+      position: absolute;
+      left: 20px;
+      bottom: 8px;
+      display: flex;
+      align-items: center;
+      .fullscreen {
+        cursor: pointer;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: url("../../../public/static/screen/icon_on.png") no-repeat center center;
+        &.active {
+          background: url("../../../public/static/screen/icon_off.png") no-repeat center center;
+        }
+      }
+      .time {
+        margin-left: 16px;
+        font-size: 14px;
+        color: #2eb8ff;
+      }
+    }
+    .right {
+      position: absolute;
+      right: 24px;
+      bottom: 8px;
+      display: flex;
+      align-items: center;
+      .rangePicker {
+        :global {
+          .ant-picker-outlined {
+            background: rgba(3,39,142,0.20);
+            border-width: 1px;
+            border-style: solid;
+            border-color: #0638c4;
+          }
+          .ant-picker {
+            color: #2EB8FF;
+            outline: none;
+          }
+          .ant-picker-outlined:focus {
+            box-shadow: none;
+          }
+          //.ant-picker-outlined {
+          //  .ant-picker-input {
+          //    color: #2EB8FF;
+          //    background: rgba(3,39,142,0.20);
+          //    border: 1px solid #0638c4;
+          //  }
+          //  .ant-picker-icon,
+          //  .ant-picker-clear {
+          //    color: #2EB8FF;
+          //    background: transparent;
+          //  }
+          //}
+        }
+      }
+    }
+  }
+  .container {
+    position: relative;
+    height: calc(100vh - 76px);
+    margin: 0;
+    padding: 16px 18px;
+    display: grid;
+    gap: 18px 18px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "block1 map map block7"
+      "block1 map map block7"
+      "block2 map map block6"
+      "block2 map map block6"
+      "block2 map map block6"
+      "block3 block4 block4 block5"
+      "block3 block4 block4 block5"
+      "block3 block4 block4 block5";
+    .block {
+      height: 100%;
+      position: relative;
+      .title {
+        height: 44px;
+        display: flex;
+        padding-left: 44px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: left;
+        line-height: 38px;
+        letter-spacing: 5px;
+        position: relative;
+        color: #fff;
+        background: url("../../../public/static/screen/block_title_bg.png") no-repeat left top;
+      }
+      .content {
+        height: calc(100% - 44px);
+        position: relative;
+        transform: translate(-2px -9px);
+        padding: 12px;
+        z-index: 0;
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0.5;
+          z-index: -1;
+          background: linear-gradient(0deg,rgba(6,65,198,0.01) 2%, rgba(6,65,198,0.30) 70%, rgba(6,65,198,0.30) 99%);
+        }
+      }
+    }
+    .block1 { grid-area: block1; }
+    .block2 { grid-area: block2; }
+    .block3 { grid-area: block3; }
+    .block4 { grid-area: block4; }
+    .block5 { grid-area: block5; }
+    .block6 { grid-area: block6; }
+    .block7 { grid-area: block7; }
+    .map {
+      grid-area: map;
+      position: relative;
+    }
+    .block1 {
+      .content {
+        display: flex;
+        align-items: center;
+      }
+
+    }
+  }
+}

@@ -1,0 +1,59 @@
+body {
+  padding: 0;
+}
+
+.scrollBarWhite {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow:inset006pxrgba(0,0,0,0.3);
+    border-radius:10px;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(138, 151, 181, 0.5);
+    box-shadow: inset006pxrgba(0,0,0,0.5);
+  }
+  &::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(138, 151, 181, 0.6);
+  }
+}
+
+.scrollBarBlue {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow:inset006pxrgba(0,0,0,0.3);
+    border-radius:10px;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(37, 156, 243, 0.5);
+    box-shadow: inset006pxrgba(0,0,0,0.5);
+  }
+  &::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(37, 156, 243, 0.6);
+  }
+
+}
+
+.clearfix {
+  zoom: 1; // For IE 6/7 (trigger hasLayout)
+
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear:both;
+  }
+}

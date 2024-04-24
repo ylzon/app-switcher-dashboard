@@ -1,0 +1,69 @@
+.pieView {
+  width: 100%;
+  height: 105%;
+  position: relative;
+  .pie {
+    width: 100%;
+    height: 100%;
+  }
+  .legend {
+    position: absolute;
+    right: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    .legendItem {
+      display: flex;
+      position: relative;
+      justify-content: flex-start;
+      align-items: center;
+      cursor: pointer;
+      margin-bottom: 10px;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -6px;
+        display: block;
+        width: 243px;
+        height: 1px;
+        background: url("../../../../../public/static/screen/border.png") no-repeat left center;
+      }
+      &:last-child::after {
+        background: transparent;
+      }
+      .legendIcon {
+        width: 14px;
+        height: 20px;
+        background: linear-gradient(90deg, rgba(126,166,234,0.15) 0%, #7ea6ea 100%);
+        border-radius: 2px;
+        margin-right: 11px;
+        &.grey { background: linear-gradient(90deg, rgba(2, 137, 251, 0.1) 0%, #7ea6ea 100%);}
+        &.orange { background: linear-gradient(90deg, rgba(236, 184, 26, 0.1) 0%, #f8d41f 100%);}
+        &.black { background: linear-gradient(90deg, rgba(152, 195, 247, 0.1) 0%, #cb7107 100%);}
+        &.blue { background: linear-gradient(90deg, rgba(2, 90, 252, 0.1) 0%, #025afc 100%);}
+        &.green { background: linear-gradient(90deg, rgba(6, 235, 114, 0.1) 0%, #06eb72 100%);}
+        &.red { background: linear-gradient(90deg, rgba(180, 2, 5, 0.1) 0%, #b40205 100%);}
+      }
+      .legendText{
+        font-size: 15px;
+        font-weight: 400;
+        text-align: left;
+        color: #7ea6ea;
+        line-height: 24px;
+        letter-spacing: 0.8px;
+        text-shadow: 0 0 18px #0c44fb;
+      }
+      .legendCount {
+        margin-left: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: left;
+        color: #fff;
+        line-height: 24px;
+        letter-spacing: 0.8px;
+        text-shadow: 0 0 18px #0c44fb;
+      }
+    }
+  }
+}

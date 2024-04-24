@@ -1,0 +1,48 @@
+@import "../../../../../src/styles/global.less";
+.detailModal {
+  :global {
+    .ant-modal-content {
+      background-color: transparent;
+    }
+    .ant-modal-header {
+      height: 44px;
+      display: flex;
+      background: url("../../../../../public/static/screen/block_title_bg.png") no-repeat left top;
+      border-bottom: 2px solid transparent;
+      padding: 0;
+      .ant-modal-title {
+        font-size: 16px;
+        font-weight: bold;
+        text-align: left;
+        line-height: 44px;
+        letter-spacing: 5px;
+        padding-left: 44px;
+        color: #fff;
+      }
+    }
+    .ant-modal-body {
+      background: linear-gradient(0deg,rgba(6,65,198,0.1) 2%, rgba(6,65,198,0.40) 49%, rgba(5, 42, 115, 0.7) 99%);
+      .scrollBarWhite();
+    }
+    .ant-modal-close-x {
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+      color: #279DCB;
+      font-size: 24px;
+    }
+  }
+  .logView {
+    pre {
+      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+      padding: 10px;
+      color: #abc4ef;
+      border: 1px solid rgba(22, 89, 165, 0.6);
+      white-space: pre-wrap;
+      background-color: rgba(22, 89, 165, 0.2);
+    }
+  }
+}

@@ -1,0 +1,102 @@
+@import "../../../../../src/styles/global.less";
+.tableView {
+  :global {
+    .ant-table {
+      color: #7EA6EA;
+      font-size: 12px!important;
+      font-weight: 400;
+      text-align: left;
+      letter-spacing: 0.7px;
+    }
+    .ant-table-body {
+      //.scrollBarBlue()
+
+    }
+    .ant-table-small {
+      border: none;
+      border-radius: 0;
+    }
+    .ant-table-wrapper .ant-table,
+    .ant-table-small > .ant-table-content .ant-table-header,
+    .ant-table-wrapper .ant-table-thead >tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before,
+    .ant-table-fixed-header > .ant-table-content > .ant-table-scroll > .ant-table-body {
+      background: transparent;
+    }
+    .ant-table-wrapper .ant-table.ant-table-small .ant-table-tbody>tr>td {
+      border-bottom: none;
+    }
+    .ant-table-wrapper .ant-table-cell-scrollbar:not([rowspan]) {
+      box-shadow: none;
+    }
+    .ant-table-wrapper .ant-table-thead >tr>th {
+      background-color: rgba(5, 46, 167, 0.25);
+      border-bottom: none;
+    }
+    .ant-table-thead {
+      border-bottom: 8px solid transparent;
+    }
+    .ant-table-thead > tr > th {
+      color: #059CF4;
+    }
+    .ant-table td {
+      border-bottom: none;
+      cursor: pointer;
+    }
+    .ant-table tbody tr:hover td { background-color: rgba(2, 90, 252, 0.4) !important; }
+    .ant-table tbody tr.blueRow:hover td { background-color: rgba(2, 90, 252, 0.4) !important; }
+    .ant-table tbody tr.greyRow:hover td { background-color: rgba(5, 46, 167, 0.4) !important; }
+    .ant-table tbody tr.redRow:hover td { background-color: rgba(180, 2, 5, 0.4) !important; }
+    .ant-table tbody tr.yellowRow:hover td { background-color: rgba(236, 184, 26, 0.4) !important; }
+    .ant-table tbody tr.cyanRow:hover td { background-color: rgba(2, 137, 251, 0.4) !important; }
+    .ant-table tbody tr.greenRow:hover td { background-color: rgba(6, 235, 114, 0.4) !important; }
+    //tr:hover:not(.ant-table-expanded-row) > td {
+    //  background: rgb(240 248 255 / 50%)!important;
+    //}
+    //.ant-table-tbody > tr {
+    //  &.blueRow:hover:not(.ant-table-expanded-row) > td { background-color: rgba(2, 90, 252, 0.5)!important; }
+    //  &.greyRow:hover:not(.ant-table-expanded-row) > td { background-color: rgba(5, 46, 167, 0.5)!important; }
+    //  &.redRow:hover:not(.ant-table-expanded-row) > td { background-color: rgba(180, 2, 5, 0.5)!important; }
+    //  &.yellowRow:hover:not(.ant-table-expanded-row) > td { background-color: rgba(236, 184, 26, 0.5)!important; }
+    //  &.cyanRow:hover:not(.ant-table-expanded-row) > td { background-color: rgba(2, 137, 251, 0.5)!important; }
+    //  &.greenRow:hover:not(.ant-table-expanded-row) > td { background-color: rgba(6, 235, 114, 0.5)!important; }
+    //}
+
+    //.ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td
+  }
+  .lightRow td { background-color: transparent; }
+  .darkRow td { background-color: rgba(5, 46, 167, 0.25) !important; }
+  .blueRow, .greyRow, .redRow, .yellowRow, .cyanRow, .greenRow {
+    td {
+      position: relative;
+      border-bottom: 4px solid transparent;
+      cursor: pointer;
+      &:first-child {
+        border-left: 12px solid transparent;
+      }
+      &:first-child::before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: 0;
+        width: 3px;
+        height: 100%;
+      }
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .blueRow td { background-color: rgba(2, 90, 252, 0.2); &::before { background: #025afc }}
+  .greyRow td { background-color: rgba(5, 46, 167, 0.2); &::before { background: #98c3f7 }}
+  .redRow td { background-color: rgba(180, 2, 5, 0.2); &::before { background: #b40205 }}
+  .yellowRow td { background-color: rgba(236, 184, 26, 0.2); &::before { background: #ecb81a }}
+  .cyanRow td { background-color: rgba(2, 137, 251, 0.2); &::before { background: #0289fb }}
+  .greenRow td { background-color: rgba(6, 235, 114, 0.2); &::before { background: #06eb72 }}
+  //.blueRow:hover { background-color: rgba(2, 90, 252, 0.5); }
+  //.greyRow:hover { background-color: rgba(5, 46, 167, 0.5); }
+  //.redRow:hover { background-color: rgba(180, 2, 5, 0.5); }
+  //.yellowRow:hover { background-color: rgba(236, 184, 26, 0.5); }
+  //.cyanRow:hover { background-color: rgba(2, 137, 251, 0.5); }
+  //.greenRow:hover { background-color: rgba(6, 235, 114, 0.5); }
+}

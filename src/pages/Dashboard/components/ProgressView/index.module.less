@@ -1,0 +1,114 @@
+.progressView {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  .item {
+    display: flex;
+    white-space: nowrap;
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+      transform: translateY(20px);
+    }
+    .name {
+      font-size: 15px;
+      font-weight: bold;
+      text-align: left;
+      color: #b7d7ef;
+      line-height: 24px;
+      letter-spacing: 0.9px;
+      text-shadow: 0 0 18px #0c44fb;
+      margin-right: 9px;
+    }
+    .progressWrapper {
+      display: inline-block;
+      padding: 1px 6px 0;
+      border: 1px solid #2943c7;
+      border-radius: 4px;
+    }
+    .progress {
+      display: inline-block;
+      width: 266px;
+      height: 13px;
+      position: relative;
+      transition: all .6s;
+      background: url("../../../../../public/static/screen/progress-bg.png") no-repeat left center;
+      .progressBar {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: all .6s;
+        background: url("../../../../../public/static/screen/progress-fill.png") no-repeat left center;
+      }
+      .progressText {
+        position: absolute;
+        left: 0;
+        top: -42px;
+        display: inline-block;
+        font-size: 18px;
+        font-style: italic;
+        color: #09d9fe;
+        font-weight: bold;
+        line-height: 30px;
+        letter-spacing: 1.2px;
+        transform: translateX(-50%);
+        transition: all .6s;
+        &::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 70%;
+          transform: translateX(-50%);
+          width: 24px;
+          height: 20px;
+          background: url("../../../../../public/static/screen/progress-triangle.png") no-repeat center center;
+        }
+      }
+    }
+    .time {
+      display: flex;
+      vertical-align: middle;
+      height: 66px;
+      text-shadow: 0 0 18px #0c44fb;
+      transform: scale(0.8);
+      transform-origin: 0 0;
+      .timeItem {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 49px;
+        height: 100%;
+        font-size: 45px;
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 8px;
+        vertical-align: top;
+        background: url("../../../../../public/static/screen/number_bg.png") no-repeat center top;
+        margin-right: 6px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      .timeSplit {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 4px;
+        height: 80%;
+        font-size: 45px;
+        font-weight: normal;
+        color: #ffffff;
+        line-height: 8px;
+        margin-right: 6px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
