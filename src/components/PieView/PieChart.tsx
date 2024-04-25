@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import ReactECharts from 'echarts-for-react';
 import { getLinearGradientLayout } from '@/utils/utils';
-import { IProps } from '@/pages/Dashboard/components/PieView';
+import { IProps } from '@/components/PieView';
 
 function PieChart2(props: IProps) {
   const { data } = props;

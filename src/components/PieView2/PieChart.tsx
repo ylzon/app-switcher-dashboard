@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import ReactECharts from 'echarts-for-react';
-import {IProps, keyType} from '@/pages/Dashboard/components/PieView2/index';
+import {IProps, keyType} from '@/components/PieView2/index';
 import { APP_GROUP_SWITCH_STATUS_DICT } from '@/common/constants';
 import { getLinearGradientLayout } from '@/utils/utils';
 

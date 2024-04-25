@@ -5,7 +5,7 @@ import {
   statusTextRender,
   switchMonitorDirectionRender,
   switchMonitorStatusRender,
-} from '@/utils/tableRender';
+} from '@/utils/tableRender.tsx';
 export const switchMonitorColumn = {
   system: [
     { width: `${100 / 4}%`, key: 'systemName', dataIndex: 'systemName', title: '应用系统', render: emptyRender },

@@ -37,7 +37,7 @@ export const switchMonitorDirectionRender = (value: number) => {
       <span>
         {arr[0]}
         <img
-          src='/static/screen/icon_arrow.png'
+          src='/app-switcher-dashboard/static/screen/icon_arrow.png'
           style={{ width: '36px', height: '20px', margin: '0 5px 0 0', transform: 'translateY(6px)' }}
           alt="=>"
         />

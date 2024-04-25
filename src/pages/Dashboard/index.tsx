@@ -4,20 +4,20 @@ import styles from './index.module.less';
 import {DatePicker} from 'antd';
 import {useAsyncEffect, useFullscreen} from 'ahooks';
 import {SwitchMonitorScreenState, useSwitchMonitorScreenStore} from '@/stores/SwitchMonitorScreen';
-import MapView from './components/MapView';
-import PieView from '@/pages/Dashboard/components/PieView';
-import TableView, {DataType} from '@/pages/Dashboard/components/TableView';
-import ProgressView from '@/pages/Dashboard/components/ProgressView';
-import PieView2 from '@/pages/Dashboard/components/PieView2';
+import MapView from '@/components/MapView';
+import PieView from '@/components/PieView';
+import TableView, {DataType} from '@/components/TableView';
+import ProgressView from '@/components/ProgressView';
+import PieView2 from '@/components/PieView2';
 import dayjs from 'dayjs';
 import Clock from '@/components/Clock';
 import { ClockCircleOutlined } from '@ant-design/icons';
-import {switchMonitorColumn, switchMonitorModalColumn} from '@/pages/Dashboard/utils/getColumn';
+import {switchMonitorColumn, switchMonitorModalColumn} from '@/utils/getColumn.tsx';
 import {
   ClickAlertSwitchMessageRequest, ClickAssemblySwitchMessageRequest, ClickStateSwitchMessageRequest,
   ClickSwitchMonitorCountRequest, ClickSystemSwitchMessageRequest,
 } from '@/stores/SwitchMonitorScreenType';
-import DetailModal from '@/pages/Dashboard/components/DetailModal';
+import DetailModal from '@/components/DetailModal';
 import {useWindowSize} from '@/hooks/useWindowSize.ts';
 import {RangePickerProps} from 'antd/es/date-picker';
 

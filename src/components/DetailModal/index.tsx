@@ -1,7 +1,7 @@
 import React from 'react';
 import {ModalProps, TableProps} from 'antd';
 import { Modal, Spin, Empty } from 'antd';
-import TableView, {DataType} from '@/pages/Dashboard/components/TableView';
+import TableView, {DataType} from '@/components/TableView';
 import styles from './index.module.less';
 import _ from 'lodash';
 
