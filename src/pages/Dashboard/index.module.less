@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   color: #fff;
   background: #021250;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 h1,h2,h3,h4,h5,h6 {
   padding: 0;
@@ -13,7 +13,8 @@ h1,h2,h3,h4,h5,h6 {
 .dashboard {
   font-family: Microsoft YaHei, Microsoft YaHei-Regular;
   background: #00063C url("../../../public/static/screen/bg.png") no-repeat center top;
-  margin: 0 -12px;
+  //margin: 0 -12px;
+
   .header {
     height: 76px;
     display: flex;
@@ -101,20 +102,21 @@ h1,h2,h3,h4,h5,h6 {
     padding: 16px 18px;
     display: grid;
     gap: 18px 18px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:
-      "block1 map map block7"
-      "block1 map map block7"
-      "block2 map map block6"
-      "block2 map map block6"
-      "block2 map map block6"
-      "block3 block4 block4 block5"
-      "block3 block4 block4 block5"
-      "block3 block4 block4 block5";
+      "block1 block1 map map map map block7 block7"
+      "block1 block1 map map map map block7 block7"
+      "block2 block2 map map map map block6 block6"
+      "block2 block2 map map map map block6 block6"
+      "block2 block2 map map map map block6 block6"
+      "block3 block3 block4 block4 block4 block4 block5 block5"
+      "block3 block3 block4 block4 block4 block4 block5 block5"
+      "block3 block3 block4 block4 block4 block4 block5 block5";
     .block {
       height: 100%;
       position: relative;
+      border: 1px solid rgba(9, 98, 198, .2);
       .title {
         height: 44px;
         display: flex;
@@ -157,7 +159,8 @@ h1,h2,h3,h4,h5,h6 {
     .block7 { grid-area: block7; }
     .map {
       grid-area: map;
-      position: relative;
+      border: none;
+
     }
     .block1 {
       .content {

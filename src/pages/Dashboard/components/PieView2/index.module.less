@@ -1,16 +1,14 @@
 .pieView {
   width: 100%;
-  height: 105%;
-  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
   .pie {
-    width: 100%;
+    flex: 1;
     height: 100%;
   }
   .legend {
-    position: absolute;
-    right: 36px;
-    top: 50%;
-    transform: translateY(-50%);
+    margin: 0 0 0 50px;
     .legendItem {
       display: flex;
       position: relative;
@@ -53,6 +51,7 @@
         line-height: 24px;
         letter-spacing: 0.8px;
         text-shadow: 0 0 18px #0c44fb;
+        white-space: nowrap;
       }
       .legendCount {
         margin-left: 12px;

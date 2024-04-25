@@ -15,8 +15,8 @@ export const switchMonitorColumn = {
   ],
   state: [
     { width: `${100 / 3}%`, key: 'stateName', dataIndex: 'stateName', title: '阶段名称', render: emptyRender },
-    { width: `${100 / 3}%`, key: 'timeout', dataIndex: 'timeout', title: '阶段耗时', render: emptyRender },
-    { width: `${100 / 3}%`, key: 'status', dataIndex: 'status', title: '状态', render: switchMonitorStatusRender },
+    { width: `${100 / 4}%`, key: 'timeout', dataIndex: 'timeout', title: '阶段耗时', render: emptyRender },
+    { width: `${100 / 4}%`, key: 'status', dataIndex: 'status', title: '状态', render: switchMonitorStatusRender },
   ],
   assembly: [
     { width: `${100 / 7}%`, key: 'stepName', dataIndex: 'stepName', title: '组件名称', render: emptyRender },
@@ -28,25 +28,24 @@ export const switchMonitorColumn = {
     { width: `${100 / 7}%`, key: 'status', dataIndex: 'status', title: '状态', render: switchMonitorStatusRender },
   ],
   alert: [
-    { width: `${100 / 3}%`, key: 'systemName', dataIndex: 'systemName', title: '系统名称', render: emptyRender },
-    { width: `${100 / 3}%`, key: 'stepName', dataIndex: 'stepName', title: '组件名称', render: emptyRender },
-    { width: `${100 / 3}%`, key: 'alertTime', dataIndex: 'alertTime', title: '告警时间', render: emptyRender },
+    { width: `${100 / 4}%`, key: 'systemName', dataIndex: 'systemName', title: '系统名称', render: emptyRender },
+    { width: `${100 / 4}%`, key: 'stepName', dataIndex: 'stepName', title: '组件名称', render: emptyRender },
+    { width: `${100 / 2}%`, key: 'alertTime', dataIndex: 'alertTime', title: '告警时间', render: emptyRender },
   ],
 };
 
 export const switchMonitorModalColumn = {
   count: [
-    { width: `${100 / 11}%`, key: 'applicationGroupName', dataIndex: 'applicationGroupName', title: '群组名称', render: emptyRender },
-    { width: `${100 / 11}%`, key: 'applicationGroupDescription', dataIndex: 'applicationGroupDescription', title: '群组描述', render: emptyRender },
-    { width: `${100 / 11}%`, key: 'applicationGroupStatus', dataIndex: 'applicationGroupStatus', title: '状态', render: statusTextRender },
-    { width: `${100 / 11}%`, key: 'managerName', dataIndex: 'managerName', title: '管理者名称', render: emptyRender },
-    { width: `${100 / 11}%`, key: 'drillingMethod', dataIndex: 'drillingMethod', title: '演练方式', render: drillTypeRender },
-    { width: `${100 / 11}%`, key: 'approveName', dataIndex: 'approveName', title: '审批人名称', render: emptyRender },
-    { width: `${100 / 11}%`, key: 'approveResult', dataIndex: 'approveResult', title: '驳回意见', render: emptyRender },
-    { width: `${100 / 11}%`, key: 'currentUserId', dataIndex: 'currentUserId', title: '当前登陆用户id', render: emptyRender },
-    { width: `${100 / 11}%`, key: 'taskId', dataIndex: 'taskId', title: '关联群组启动任务的id', render: emptyRender },
-    { width: `${100 / 11}%`, key: 'workId', dataIndex: 'workId', title: '群组启动任务id', render: emptyRender },
-    { width: `${100 / 11}%`, key: 'belongCenter', dataIndex: 'belongCenter', title: '所属中心', render: emptyRender },
+    { width: `${100 / 10}%`, key: 'applicationGroupName', dataIndex: 'applicationGroupName', title: '群组名称', render: emptyRender },
+    { width: `${100 / 10}%`, key: 'applicationGroupStatus', dataIndex: 'applicationGroupStatus', title: '状态', render: statusTextRender },
+    { width: `${100 / 10}%`, key: 'managerName', dataIndex: 'managerName', title: '管理者名称', render: emptyRender },
+    { width: `${100 / 10}%`, key: 'drillingMethod', dataIndex: 'drillingMethod', title: '演练方式', render: drillTypeRender },
+    { width: `${100 / 10}%`, key: 'approveName', dataIndex: 'approveName', title: '审批人名称', render: emptyRender },
+    { width: `${100 / 10}%`, key: 'approveResult', dataIndex: 'approveResult', title: '驳回意见', render: emptyRender },
+    { width: `${100 / 10}%`, key: 'currentUserId', dataIndex: 'currentUserId', title: '当前登陆用户id', render: emptyRender },
+    { width: `${100 / 10}%`, key: 'taskId', dataIndex: 'taskId', title: '关联任务id', render: emptyRender },
+    { width: `${100 / 10}%`, key: 'workId', dataIndex: 'workId', title: '群组启动任务id', render: emptyRender },
+    { width: `${100 / 10}%`, key: 'belongCenter', dataIndex: 'belongCenter', title: '所属中心', render: emptyRender },
   ],
   assembly: [ // 系统 阶段
     { width: `${100 / 11}%`, key: 'switchName', dataIndex: 'switchName', title: '切换方向', render: switchMonitorDirectionRender },

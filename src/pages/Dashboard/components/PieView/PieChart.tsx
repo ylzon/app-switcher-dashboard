@@ -70,7 +70,7 @@ function PieChart2(props: IProps) {
       text: total,
       textStyle: {
         color: '#DFE3ED',
-        fontSize: 36,
+        fontSize: 30,
         fontWeight: 'bold',
         lineHeight: 40,
         textShadowColor: 'rgba(32,253,210,0.9)', // 文字阴影颜色
@@ -81,17 +81,17 @@ function PieChart2(props: IProps) {
       subtext: '群组总数',
       subtextStyle: {
         color: '#B7D7EF',
-        fontSize: 12,
+        fontSize: 13,
       },
       itemGap: 0,
       left: 'center',
-      top: '23%',
+      top: '28%',
     },
     series: [
       // 数值
       {
         type: 'pie',
-        radius: ['60%', '80%'],
+        radius: ['70%', '90%'],
         center: ['50%', '50%'],
         avoidLabelOverlap: false,
         label: {
@@ -111,7 +111,7 @@ function PieChart2(props: IProps) {
       // 装饰用的外圈环线
       {
         type: 'pie',
-        radius: ['85%', '87.5%'],
+        radius: ['95%', '97.5%'],
         center: ['50%', '50%'],
         avoidLabelOverlap: false,
         label: {

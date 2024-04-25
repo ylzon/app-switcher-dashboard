@@ -7,6 +7,7 @@ import { getLinearGradientLayout } from '@/utils/utils';
 function PieChart2(props: IProps) {
   const { data } = props;
   const echartRef = useRef<any>(null);
+  const pieStartRadius = 68;
   const layout = getLinearGradientLayout(Object.keys(APP_GROUP_SWITCH_STATUS_DICT)?.map(key => {
     const item = APP_GROUP_SWITCH_STATUS_DICT[key];
     return { x: item.label, y: data?.[item.field] || 0 };
@@ -35,12 +36,33 @@ function PieChart2(props: IProps) {
     tooltip: {
       trigger: 'item',
     },
+    title: {
+      text: seriesData.reduce((prev: number, current: any) => prev + current.value, 0),
+      textStyle: {
+        color: '#DFE3ED',
+        fontSize: 40,
+        fontWeight: 'bold',
+        lineHeight: 40,
+        textShadowColor: 'rgba(32,253,210,0.9)', // 文字阴影颜色
+        textShadowBlur: 16, // 文字阴影模糊大小
+        textShadowOffsetX: 0, // 文字阴影水平偏移量
+        textShadowOffsetY: 0, // 文字阴影垂直偏移量
+      },
+      subtext: '切换总数',
+      subtextStyle: {
+        color: '#B7D7EF',
+        fontSize: 13,
+      },
+      itemGap: 0,
+      left: 'center',
+      top: '40%',
+    },
     series: [
       // 数值
       {
         type: 'pie',
-        radius: ['45%', '70%'],
-        center: ['30%', '50%'],
+        radius: [`${pieStartRadius}%`, `${pieStartRadius + 25}%`],
+        center: ['50%', '50%'],
         avoidLabelOverlap: false,
         label: {
           show: false,
@@ -62,8 +84,8 @@ function PieChart2(props: IProps) {
       // 装饰用的内圈环线
       {
         type: 'pie',
-        radius: ['38%', '38.5%'],
-        center: ['30%', '50%'],
+        radius: [`${pieStartRadius - 7}%`, `${pieStartRadius - 6.5}%`],
+        center: ['50%', '50%'],
         avoidLabelOverlap: false,
         label: {
           show: false,
@@ -89,8 +111,8 @@ function PieChart2(props: IProps) {
       // 装饰用的外圈环线
       {
         type: 'pie',
-        radius: ['76%', '76.5%'],
-        center: ['30%', '50%'],
+        radius: [`${pieStartRadius + 31}%`, `${pieStartRadius + 31.5}%`],
+        center: ['50%', '50%'],
         avoidLabelOverlap: false,
         label: {
           show: false,

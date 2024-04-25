@@ -44,7 +44,8 @@ const DetailModal: React.FC<IProps> = (props) => {
       className={styles.detailModal}
       styles={{
         body: {
-          padding: 16, minHeight: 'calc(100vh - 250px)'
+          padding: 16,
+          minHeight: 'calc(100vh - 450px)'
         }
       }}
       {...restProps}
