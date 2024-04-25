@@ -2,4 +2,8 @@
 
 基于React18 + Zustand + echarts 开发的大屏项目
 
-![overview.png](overview.png)
+## 预览
+
+[https://ylzon.github.io/app-switcher-dashboard/](https://ylzon.github.io/app-switcher-dashboard/)
+
+![overview.png](docs/overview.png)
