@@ -1,21 +1,21 @@
 import { useRef } from 'react';
 import ReactECharts from 'echarts-for-react';
-import { IProps } from '@/pages/Dashboard/components/PieView2/index';
+import {IProps, keyType} from '@/pages/Dashboard/components/PieView2/index';
 import { APP_GROUP_SWITCH_STATUS_DICT } from '@/common/constants';
 import { getLinearGradientLayout } from '@/utils/utils';
 
 function PieChart2(props: IProps) {
   const { data } = props;
-  const echartRef = useRef<any>(null);
+  const echartRef = useRef(null);
   const pieStartRadius = 68;
   const layout = getLinearGradientLayout(Object.keys(APP_GROUP_SWITCH_STATUS_DICT)?.map(key => {
     const item = APP_GROUP_SWITCH_STATUS_DICT[key];
-    return { x: item.label, y: data?.[item.field] || 0 };
+    return { x: item.label, y: data?.[item.field as keyType] || 0 };
   }));
-  const seriesData: any = Object.keys(APP_GROUP_SWITCH_STATUS_DICT)?.map((key, index) => {
+  const seriesData = Object.keys(APP_GROUP_SWITCH_STATUS_DICT)?.map((key, index) => {
     const item = APP_GROUP_SWITCH_STATUS_DICT[key];
     return {
-      value: data?.[item.field] || 0,
+      value: data?.[item.field as keyType] || 0,
       name: item.label,
       itemStyle: {
         color: {
@@ -37,7 +37,7 @@ function PieChart2(props: IProps) {
       trigger: 'item',
     },
     title: {
-      text: seriesData.reduce((prev: number, current: any) => prev + current.value, 0),
+      text: seriesData.reduce((prev: number, current) => prev + current.value, 0),
       textStyle: {
         color: '#DFE3ED',
         fontSize: 40,
@@ -143,11 +143,11 @@ function PieChart2(props: IProps) {
       ref={echartRef}
       style={{ height: '100%', width: '100%' }}
       onEvents={{
-        click: (params: any) => {
+        click: (params: Record<string, string>) => {
           // 在APP_GROUP_SWITCH_STATUS_DICT中找params.name对应的key
           const key = Object.keys(APP_GROUP_SWITCH_STATUS_DICT)?.find(key => APP_GROUP_SWITCH_STATUS_DICT[key].label === params.name);
           props?.onClick?.({
-            applicationGroupStatus: key,
+            applicationGroupStatus: key as keyType,
           });
         },
       }}

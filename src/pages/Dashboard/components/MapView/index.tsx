@@ -1,13 +1,14 @@
 import classNames from 'classnames';
 import React from 'react';
-// @ts-ignore
+import {SwitchCountResponse, SwitchMonitorCountData} from '@/stores/SwitchMonitorScreenType';
 import styles from './index.module.less';
-import { SwitchMonitorCountData } from '@/stores/SwitchMonitorScreenType';
 
 export interface IProps {
   data?: SwitchMonitorCountData;
-  onClick?: (itemParams: any) => void;
+  onClick?: (itemParams: object) => void;
 }
+
+type keyType = 'unSameSpaceCenter' | 'sameSpaceCenter' | 'produceSpaceCenter'
 
 const MapView: React.FC<IProps> = ({ data, onClick }) => {
   const keyDict = [
@@ -27,7 +28,7 @@ const MapView: React.FC<IProps> = ({ data, onClick }) => {
     <div className={styles.mapView}>
       <div className={styles.mapBg}>
         {keyDict.map(({ key, className, type }) => {
-          const item = data?.[key];
+          const item: SwitchCountResponse | undefined = data?.[key as keyType]
           return (
             <div className={classNames([styles[className]])} key={key}>
               <div className={styles.row}>

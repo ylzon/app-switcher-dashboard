@@ -1,13 +1,12 @@
 import React from 'react';
 import PieChart from './PieChart';
-// @ts-ignore
 import styles from './index.module.less';
 import classNames from 'classnames';
 import { SwitchMessageResponse } from '@/stores/SwitchMonitorScreenType';
 
 export interface IProps {
   data?: SwitchMessageResponse;
-  onClick?: (params: any) => void;
+  onClick?: (params: Record<string, string>) => void;
 }
 
 const PieView: React.FC<IProps> = ({ data, onClick }) => {

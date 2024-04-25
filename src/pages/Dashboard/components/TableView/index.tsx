@@ -1,15 +1,29 @@
 import React from 'react';
-import { Table } from 'antd';
+import {Table, TableProps} from 'antd';
 import styles from './index.module.less';
+import {
+  ApplicationGroupSwitchDto,
+  SwitchAlertMessageResponse,
+  SwitchAssemblyMessageResponse,
+  SwitchStateMessageResponse,
+  SystemSwitchResponse
+} from '@/stores/SwitchMonitorScreenType';
+
+export type DataType = SwitchAssemblyMessageResponse
+  | SwitchStateMessageResponse
+  | SystemSwitchResponse
+  | SwitchAlertMessageResponse
+  | ApplicationGroupSwitchDto
+
 
 interface IProps {
   title?: string;
-  columns?: unknown[];
-  data?: unknown[];
+  columns?: TableProps<DataType>['columns'];
+  data?: DataType[];
   rowKey?: string;
   loading?: boolean;
   tableHeight?: number;
-  onRowClick?: (itemParams: unknown) => void;
+  onRowClick?: (itemParams: DataType) => void;
 }
 
 const TableView: React.FC<IProps> = (props) => {
@@ -54,18 +68,14 @@ const TableView: React.FC<IProps> = (props) => {
         rowKey={rowKey}
         pagination={false}
         rowClassName={getRowClassName}
-        columns={columns}
-        dataSource={data}
+        columns={columns as TableProps['columns']}
+        dataSource={data as TableProps['dataSource']}
         loading={loading}
         scroll={{ y: props?.tableHeight || 300 }}
-        onRow={(record) => {
+        onRow={() => {
           return {
             onClick: () => {
-              onRowClick && onRowClick({
-                systemId: record?.systemId,
-                stepState: record?.stepState,
-                stepId: record?.stepId,
-              });
+              onRowClick && onRowClick({});
             }
           };
         }}

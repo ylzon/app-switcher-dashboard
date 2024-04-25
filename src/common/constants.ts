@@ -1,12 +1,4 @@
-/**
- * 登录配置常量
- */
-export const CONNECT_TYPES: string[] = ['FTP', 'SSH', 'Oracle'];
-export const CONNECTS_TYPES_COLORS: Record<string, string> = {
-  ssh: '#1890ff',
-  ftp: '#2f54eb',
-  oracle: '#f5222d',
-};
+
 export const METHOD_DICT = {
   'GET': { color: 'green', label: 'GET' },
   'POST': { color: 'blue', label: 'POST' },
@@ -18,94 +10,6 @@ export const METHOD_DICT = {
 };
 
 /**
- * 请求响应体Code类型字典
- */
-export const STATUS_DICT = {
-  200: { color: '#67C23A', text: 'OK' },
-  400: { color: '#F56C6C', text: 'Bad Request' },
-  401: { color: '#F56C6C', text: 'unauthorized' },
-  403: { color: '#F56C6C', text: 'Forbidden' },
-  404: { color: '#F56C6C', text: 'Not Found' },
-  500: { color: '#F56C6C', text: 'Internal Server Error' },
-  501: { color: '#F56C6C', text: 'Not Implemented' },
-  502: { color: '#F56C6C', text: 'Bad Gateway' },
-};
-
-/**
- * 请求体类型字典
- */
-export const BODY_TYPE_MAP = [
-  '索引从1开始',
-  'none',
-  'form-data',
-  'x-www-form-urlencoded',
-  'raw',
-  'binary',
-];
-
-/**
- * 请求体类型为Raw时的内容类型字典
- */
-export const RAW_TYPE_MAP = [
-  'Text',
-  'JavaScript',
-  'JSON',
-  'HTML',
-  'XML',
-];
-
-/**
- * 请求头预置字段
- */
-export const REQUEST_HEADER_DICT = [
-  'Cookie',
-  'Accept',
-  'Accept-Charset',
-  'Accept-Language',
-  'Accept-Datetime',
-  'Authorization',
-  'Cache-Control',
-  'Connection',
-  'Content-Length',
-  'Content-MD',
-  'Content-Type',
-  'Date',
-  'Exped',
-  'From',
-  'Host',
-  'If-Match',
-  'If-Modified-Since',
-  'If-None-Match',
-  'If-Range',
-  'If-Unmodified-Since',
-  'Max-Forwards',
-  'Origin',
-  'Progma',
-  'Proxy-Authorization',
-  'Range',
-  'Referer',
-  'TE',
-  'User-Agent',
-  'Upgrade',
-  'Via',
-  'Warning',
-];
-
-// export const REQUEST_BODY_TYPE_HEADER: any = {
-//   'none':　'',
-//   'form-data': 'multipart/form-data;',
-//   'x-www-form-urlencoded': 'application/x-www-form-urlencoded',
-//   'raw': {
-//     'Text': 'text/plain',
-//     'JavaScript': 'application/javascript',
-//     'JSON': 'application/json',
-//     'HTML': 'text/html',
-//     'XML': 'application/xml',``
-//   },
-//   'binary': '',
-// };
-
-/**
  * 组件类型，传值为对应索引
  */
 export const ASSEMBLY_TYPE_MAP = [
@@ -113,7 +17,6 @@ export const ASSEMBLY_TYPE_MAP = [
   '接口',
   '人工',
 ];
-export const ASSEMBLY_TYPE_CODE_MAP = ['shell', 'api', 'manual'];
 
 /**
  * 组件状态

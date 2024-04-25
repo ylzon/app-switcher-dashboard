@@ -30,5 +30,7 @@
 
   },
   "include": ["src"],
+  // 不检查src/pages/mock.ts
+  "exclude": ["src/pages/mock.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

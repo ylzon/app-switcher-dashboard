@@ -7,8 +7,10 @@ import { SwitchCountResponse } from '@/stores/SwitchMonitorScreenType';
 
 export interface IProps {
   data?: SwitchCountResponse;
-  onClick?: (params: any) => void;
+  onClick?: (params: Record<string, string>) => void;
 }
+
+export type keyType = 'notSwitchCount' | 'underApprovalCount' | 'rejectedCount' | 'switchingCount' | 'switchOverCount' | 'switchFailCount'
 
 const PieView2: React.FC<IProps> = ({ data, onClick }) => {
   return (
@@ -29,7 +31,7 @@ const PieView2: React.FC<IProps> = ({ data, onClick }) => {
                 style={{ background: `linear-gradient(90deg, rgba(2, 137, 251, 0) 0%, ${item.colorHex} 100%)` }}
               />
               <div className={styles.legendText}>{item.label}</div>
-              <div className={styles.legendCount}>{data?.[item.field] || 0}</div>
+              <div className={styles.legendCount}>{data?.[item.field as keyType] || 0}</div>
             </div>
           );
         })}

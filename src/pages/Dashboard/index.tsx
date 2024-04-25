@@ -1,16 +1,15 @@
 import classNames from 'classnames';
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import styles from './index.module.less';
 import {DatePicker} from 'antd';
-// Icon
-import {useFullscreen, useRafInterval} from 'ahooks';
+import {useAsyncEffect, useFullscreen} from 'ahooks';
 import {SwitchMonitorScreenState, useSwitchMonitorScreenStore} from '@/stores/SwitchMonitorScreen';
 import MapView from './components/MapView';
 import PieView from '@/pages/Dashboard/components/PieView';
-import TableView from '@/pages/Dashboard/components/TableView';
+import TableView, {DataType} from '@/pages/Dashboard/components/TableView';
 import ProgressView from '@/pages/Dashboard/components/ProgressView';
 import PieView2 from '@/pages/Dashboard/components/PieView2';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import Clock from '@/components/Clock';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import {switchMonitorColumn, switchMonitorModalColumn} from '@/pages/Dashboard/utils/getColumn';
@@ -20,6 +19,7 @@ import {
 } from '@/stores/SwitchMonitorScreenType';
 import DetailModal from '@/pages/Dashboard/components/DetailModal';
 import {useWindowSize} from '@/hooks/useWindowSize.ts';
+import {RangePickerProps} from 'antd/es/date-picker';
 
 const {RangePicker} = DatePicker;
 
@@ -32,7 +32,7 @@ const Dashboard = () => {
   // 默认开始时间是当前时间-12小时，结束时间：当前时间+12 小时
   const [timeRange, setTimeRange] = React.useState<number[]>([now - 12 * 60 * 60 * 1000, now + 12 * 60 * 60 * 1000]);
   const [modalVisible, setModalVisible] = React.useState<boolean>(false);
-  const [modalData, setModalData] = React.useState<Record<string, unknown> | null>(null);
+  const [modalData, setModalData] = React.useState<DataType[] | string | null>(null);
   const [modalTitle, setModalTitle] = React.useState<string>('');
   const [modalColumns, setModalColumns] = React.useState<[]>([]);
   const modalType = modalTitle === '组件切换详情' || modalTitle === '告警详情' ? 'log' : 'table';
@@ -65,35 +65,36 @@ const Dashboard = () => {
     getClickAlertSwitchMessage,
   } = useSwitchMonitorScreenStore((state: SwitchMonitorScreenState) => state);
 
-  useEffect(() => {
-    loadData();
-  }, [timeRange[0], timeRange[1]]);
+  useAsyncEffect(async () => {
+    await loadData();
+  }, [timeRange]);
 
-  useRafInterval(() => {
-    if (modalVisible) return;
-    loadData();
-  }, 3000);
+  // useRafInterval(async () => {
+  //   if (modalVisible) return;
+  //   await loadData();
+  // }, 3000);
 
-  const loadData = () => {
+  const loadData = async () => {
     const params = {
       beginTime: `${timeRange[0]}`,
       endTime: `${timeRange[1]}`,
     };
-    getSwitchMonitorCount(params);
-    getSystemSwitchMessage(params);
-    getStateSwitchMessage(params);
-    getOverProcessMessage(params);
-    getAssemblySwitchMessage(params);
-    getAlertSwitchMessage(params);
+    await getSwitchMonitorCount(params);
+    await getSystemSwitchMessage(params);
+    await getStateSwitchMessage(params);
+    await getOverProcessMessage(params);
+    await getAssemblySwitchMessage(params);
+    await getAlertSwitchMessage(params);
   };
 
-  const onOk = (dates: unknown) => {
-    setTimeRange(dates.map((date: Dayjs) => parseInt(date.format('x'))));
-  };
+  const onChange: RangePickerProps['onChange'] = (dates) => {
+    if (dates && dates[0] && dates[1]) {
+      setTimeRange([dates[0].valueOf(), dates[1].valueOf()]);
+    }
+  }
 
-  const onItemClick = async (type: 'count' | 'system' | 'state' | 'assembly' | 'alert', itemParams) => {
+  const onItemClick = async (type: 'count' | 'system' | 'state' | 'assembly' | 'alert', itemParams: DataType) => {
     let params = {};
-    let data: any = null;
     setModalVisible(true);
     switch (type) {
       case 'count':
@@ -102,38 +103,33 @@ const Dashboard = () => {
           endTime: `${timeRange[1]}`,
           ...itemParams,
         };
-        data = await getClickSwitchMonitorCount(params as ClickSwitchMonitorCountRequest);
-        await setModalData(data);
-        await setModalTitle('应用切换详情');
-        await setModalColumns(switchMonitorModalColumn.count);
+        setModalData(await getClickSwitchMonitorCount(params as ClickSwitchMonitorCountRequest));
+        setModalTitle('应用切换详情');
+        setModalColumns(switchMonitorModalColumn.count as []);
         break;
       case 'system':
         params = {...itemParams};
-        data = await getClickSystemSwitchMessage(params as ClickSystemSwitchMessageRequest);
-        await setModalData(data);
-        await setModalTitle('应用系统切换详情');
-        await setModalColumns(switchMonitorModalColumn.assembly);
+        setModalData(await getClickSystemSwitchMessage(params as ClickSystemSwitchMessageRequest));
+        setModalTitle('应用系统切换详情');
+        setModalColumns(switchMonitorModalColumn.assembly as []);
         break;
       case 'state':
         params = {...itemParams};
-        data = await getClickStateSwitchMessage(params as ClickStateSwitchMessageRequest);
-        await setModalData(data);
-        await setModalTitle('状态阶段详情');
-        await setModalColumns(switchMonitorModalColumn.assembly);
+        setModalData(await getClickStateSwitchMessage(params as ClickStateSwitchMessageRequest));
+        setModalTitle('状态阶段详情');
+        setModalColumns(switchMonitorModalColumn.assembly as []);
         break;
       case 'assembly':
         params = {...itemParams};
-        data = await getClickAssemblySwitchMessage(params as ClickAssemblySwitchMessageRequest);
-        await setModalData(data);
-        await setModalTitle('组件切换详情');
-        await setModalColumns(switchMonitorModalColumn.assembly);
+        setModalData(await getClickAssemblySwitchMessage(params as ClickAssemblySwitchMessageRequest));
+        setModalTitle('组件切换详情');
+        setModalColumns(switchMonitorModalColumn.assembly as []);
         break;
       case 'alert':
         params = {...itemParams};
-        data = await getClickAlertSwitchMessage(params as ClickAlertSwitchMessageRequest);
-        await setModalData(data);
-        await setModalTitle('告警详情');
-        await setModalColumns(switchMonitorModalColumn.count);
+        setModalData(await getClickAlertSwitchMessage(params as ClickAlertSwitchMessageRequest));
+        setModalTitle('告警详情');
+        setModalColumns(switchMonitorModalColumn.count as []);
         break;
       default:
         break;
@@ -169,10 +165,10 @@ const Dashboard = () => {
               ]}
               format="YYYY-MM-DD"
               placeholder={['开始时间', '结束时间']}
-              onChange={onOk}
+              onChange={onChange}
               needConfirm={false}
               allowClear={false}
-              getPopupContainer={() => ref?.current}
+              getPopupContainer={() => ref?.current || document.body}
             />
           </span>
         </div>
@@ -201,7 +197,7 @@ const Dashboard = () => {
               columns={switchMonitorColumn.system}
               data={systemSwitchMessageData}
               rowKey="systemId"
-              onRowClick={data => onItemClick('system', data)}
+              onRowClick={(data: DataType) => onItemClick('system', data)}
               tableHeight={tableHeight}
             />
           </div>
@@ -269,7 +265,7 @@ const Dashboard = () => {
         title={modalTitle || '详情'}
         open={modalVisible}
         columns={modalColumns}
-        getContainer={() => ref?.current as any}
+        getContainer={() => ref?.current || document.body}
         onCancel={() => {
           setModalVisible(false);
           setModalData([]);

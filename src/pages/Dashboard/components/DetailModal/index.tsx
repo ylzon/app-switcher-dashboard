@@ -1,15 +1,15 @@
 import React from 'react';
-import { ModalProps } from 'antd';
+import {ModalProps, TableProps} from 'antd';
 import { Modal, Spin, Empty } from 'antd';
-import TableView from '@/pages/Dashboard/components/TableView';
+import TableView, {DataType} from '@/pages/Dashboard/components/TableView';
 import styles from './index.module.less';
 import _ from 'lodash';
 
 interface IProps extends ModalProps {
   type?: 'log' | 'table';
-  data?: unknown;
+  data?: DataType[] | string | null;
   title?: string;
-  columns?: unknown;
+  columns?: TableProps<DataType>['columns'];
   loading?: boolean;
 }
 
@@ -32,7 +32,7 @@ const DetailModal: React.FC<IProps> = (props) => {
   const LogView = (
     <div className={styles.logView}>
       <Spin spinning={loading}>
-        {_.isEmpty(data) ? <Empty type="data" /> : <pre>{data}</pre>}
+        {_.isEmpty(data) ? <Empty /> : <pre>{data?.toString()}</pre>}
       </Spin>
     </div>
   );

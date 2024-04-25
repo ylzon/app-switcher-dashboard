@@ -1,11 +1,11 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import ReactECharts from 'echarts-for-react';
 import { getLinearGradientLayout } from '@/utils/utils';
 import { IProps } from '@/pages/Dashboard/components/PieView';
 
 function PieChart2(props: IProps) {
   const { data } = props;
-  const echartRef = useRef<any>(null);
+  const echartRef = useRef(null);
   const total = data?.applicationGroupSwitchCount || 0;
   const nnSameSpaceCount = data?.nnSameSpaceCount || 0;
   const sameSpaceCount = data?.sameSpaceCount || 0;
@@ -14,7 +14,7 @@ function PieChart2(props: IProps) {
     { x: '异地', y: nnSameSpaceCount, color: '#04c5fd', color2: 'rgba(4,197,253,0.3)' },
   ];
   const layout = getLinearGradientLayout(dataList);
-  const seriesData: any = dataList.map((item, index) => {
+  const seriesData = dataList.map((item, index) => {
     return {
       value: item.y,
       name: item.x,
@@ -38,7 +38,7 @@ function PieChart2(props: IProps) {
     };
   });
 
-  const seriesPieData: any = dataList.map((item, index) => {
+  const seriesPieData = dataList.map((item, index) => {
     return {
       value: item.y,
       name: item.x,
@@ -136,10 +136,8 @@ function PieChart2(props: IProps) {
       ref={echartRef}
       style={{ height: '100%', width: '100%' }}
       onEvents={{
-        click: (params: any) => {
-          props?.onClick?.({
-            belongCenterOrder: params.name === '同城' ? 1 : 2,
-          });
+        click: () => {
+          props?.onClick?.({});
         },
       }}
     />
